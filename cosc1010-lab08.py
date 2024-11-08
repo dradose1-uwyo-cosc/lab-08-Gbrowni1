@@ -14,16 +14,34 @@
 # Floats should only have one decimal point in them 
 rando_string = input("Please enter something:")
 
-def Check_strings(check):
-    if isinstance(rando_string, int):
-        rando_string = int(rando_string)
-        return rando_string
-    elif isinstance(rando_string, float):
-        rando_string = float(rando_string)
-        return rando_string
+def int_float_converter(num):
+    """Check strings to see if they are an int or float, and convert them if so"""
+
+
+    isNeg = False
+    if "-" in num:
+        isNeg=True
+        num=num.replace("-","")
+    if "." in num:
+        num_split=num.split(".")
+        if len(num_split)==2 and num_split[0].isdigit() and num_split[1].isdigit():
+            if isNeg:
+                return (-1)*float(num)
+            else:
+                return float(num)
+    elif num.isdigit():
+        if isNeg:
+            return (-1)*int(num)
+        else:
+            return int(num)
     else:
         return False
-    
+
+if int_float_converter(rando_string):
+    print(f"This is a number")
+else:
+    print(f"This is not a number")    
+
 print("*" * 75)
 
 # Point-slope y = mx + b
@@ -37,33 +55,57 @@ print("*" * 75)
     # a lower x bound
     # an upper x bound
 
-def math_man(list):
-    list = []
-    return list
+
+def linearcomputation(x):
+    """Create a function slope-intercept that takes in four parameters"""
+    m = input("Please enter value for m:")
+    b = input("Please enter value for b:")
+    lower_bound = input("Please enter value for lower bound:")
+    upper_bound = input("Please enter value for upper bound:")
+    y_list = []
+    if int_float_converter(m) and int_float_converter(b) and int_float_converter(lower_bound) and int_float_converter(upper_bound):
+        if check_bounds():
+            for i in range(lower_bound, upper_bound):
+                y_list.append(m*i+b)
+                return y_list
+    else:
+        print("Invalid input") #Should never get to this point if goes through int_float_converter first.
+    return -1
+# check if its an int for bounds
+# l = 3
+# print(type(l))
+# if(type(l) == int):
+# 	print("yes")
+
+# def check_bounds():
+#     if lower_bound < upper_bound:
+#         if int(lower_bound) and int(upper_bound):
+#             return True
+#         if float(lower_bound) and float(upper_bound):
+#             return True
+#         else:
+#             print("One of the bounds is not a number")  #Should never get to this point if goes through int_float_converter first.
+#             return False
+#     else:
+#         print("The lower bound is not less that the upper bound")
+#         return False
+
 
 # Return a list for all values of y for the given x range, inclusive (whole number X's only)
 # Check to make sure that the lower bound is less than or equal to the upper bound
+
 # m, b can be floats or integers
 # the bounds must be integers, if not return false
-mb = {m:"",b:""}
-m = 0
-b = 0
-def rangelist(mb):
-    if isinstance(mb, int):
-        int(m) = mb{"m"} 
-        int(b) = mb{"b"}
-    if isinstance(mb, float):
-        float(m) = mb{"m"} 
-        float(b) = mb{"b"}
-    else:
-        return False
+y_list = math_man(12)
+print(y_list)
 
 # Create a while loop to prompt users for their input for the four variables
 # Exit on the word exit
 # Remember all inputs are strings, but the function needs ints or floats
 # Call your function and print the resulting list
-While True:
-    if 
+
+
+
 print("*" * 75)
 
 
@@ -74,3 +116,12 @@ print("*" * 75)
 # Create a loop like above to prompt the user for input for the three values
 # Create a second function that just does the square root operation 
     # If the number you are trying to take the square root of is negative, return null
+a_input = 0
+b_input = 0
+c_input = 0
+
+
+def quadratic_formula_calculator(x):
+    a_input = input("please enter your 'a' value")
+    b_input = input("please enter your 'a' value")
+    c_input = input("please enter your 'a' value")
