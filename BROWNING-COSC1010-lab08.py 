@@ -125,14 +125,38 @@ def quadratic_formula_calculator():
 
     while True:
         a_input = input("Please enter value for a:")
+        if a_input.upper() == "EXIT":
+            print("Function terminated")
+            break
         b_input = input("Please enter value for b:")
+        if b_input.upper() == "EXIT":
+            print("Function terminated")
+            break
         c_input = input("Please enter value for c:")
-
-        a = int_float_converter(a_input)
-        b = int_float_converter(b_input)
-        c = int_float_converter(c_input)
-
+        if c_input.upper() == "EXIT":
+            print("Function terminated")
+            break
+    
         def quadratic_computation():
-            x_1 = (-b+((b^2)-4*a*c)^(1/2))/2*a #plus
-            x_2 = (-b-((b^2)-4*a*c)^(1/2))/2*a #minus
-            return x_1, x_2
+            a = int_float_converter(a_input)
+            b = int_float_converter(b_input)
+            c = int_float_converter(c_input)
+            print(a, b, c)
+            sqrt_ = ((b**2)-4*a*c)
+            print(sqrt_)
+            if sqrt_ >0:  
+                root1 = ((-1*b) + (sqrt_)**(1/2))/(2*a)
+                root2 = ((-1*b) - (sqrt_)**(1/2))/(2*a)
+                print(f"The roots are {root1} and {root2}")
+            if sqrt_ <0:
+                print("null")
+                return "null"
+            if sqrt_ == 0:
+                root1 = ()
+            if c == 0:
+                root1 = 0
+                root2 = b
+                print(f"The roots are {root1} and {root2}")
+        quadratic_computation()
+    return
+quadratic_formula_calculator()
